@@ -61,7 +61,7 @@ data class Account(private val keyPair: TweetNaclFast.Signature.KeyPair = TweetN
 
             // Convert each String character into byte and put it in the buffer
             chars.forEach { character ->
-                buffer.put(character.toByte())
+                buffer.put(character.toInt().toByte())
             }
             return buffer.array()
         }

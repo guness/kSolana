@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.guness.ksolana"
-version = "0.1.0"
+version = "0.1.1"
 
 android {
     val versions: Map<String, Int> by rootProject.extra
