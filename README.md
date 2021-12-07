@@ -1,5 +1,5 @@
 # kSolana
-
+[![](https://jitpack.io/v/guness/kSolana.svg)](https://jitpack.io/#guness/kSolana)
 Solana blockchain client, ported from [SolanaJ](https://github.com/skynetcapital/solanaj) to Kotlin using coroutines.
 kSolana is an API for integrating with Solana blockchain using the [Solana RPC API](https://docs.solana.com/apps/jsonrpc-api)
 
