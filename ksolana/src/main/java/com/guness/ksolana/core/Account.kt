@@ -7,13 +7,12 @@ import java.nio.ByteBuffer
 /**
  * Created by guness on 6.12.2021 15:46
  */
-data class Account(private val keyPair: TweetNaclFast.Signature.KeyPair = TweetNaclFast.Signature.keyPair()) {
+data class Account(val secretKey: ByteArray) {
 
-    constructor(secretKey: ByteArray) : this(TweetNaclFast.Signature.keyPair_fromSecretKey(secretKey))
     constructor(account: String) : this(account.decodeBase58())
+    constructor() : this(TweetNaclFast.Signature.keyPair().secretKey)
 
-    val publicKey: PublicKey = PublicKey(keyPair.publicKey)
-    val secretKey: ByteArray = keyPair.secretKey
+    val publicKey: PublicKey = PublicKey(TweetNaclFast.Signature.keyPair_fromSecretKey(secretKey).publicKey)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -21,20 +20,12 @@ data class Account(private val keyPair: TweetNaclFast.Signature.KeyPair = TweetN
 
         other as Account
 
-        if (!keyPair.publicKey.contentEquals(other.keyPair.publicKey)) return false
-
-        if (!keyPair.secretKey.contentEquals(other.keyPair.secretKey)) return false
-
-        if (keyPair != other.keyPair) return false
+        if (!secretKey.contentEquals(other.secretKey)) return false
 
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = keyPair.publicKey.contentHashCode()
-        result = result * 31 + keyPair.secretKey.contentHashCode()
-        return result
-    }
+    override fun hashCode(): Int = secretKey.contentHashCode()
 
     companion object {
         /**

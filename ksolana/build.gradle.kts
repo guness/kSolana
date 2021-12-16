@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.guness.ksolana"
-version = "0.1.1"
+version = "0.1.2"
 
 android {
     val versions: Map<String, Int> by rootProject.extra
@@ -87,7 +87,8 @@ val javadocJar by tasks.register("javadocJar", Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
-
+// Defining scope: https://stackoverflow.com/a/25201395
+// Definition of scope: https://www.baeldung.com/maven-dependency-scopes
 afterEvaluate {
     publishing {
         publications {
