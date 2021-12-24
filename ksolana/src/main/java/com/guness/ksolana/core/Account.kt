@@ -2,6 +2,7 @@ package com.guness.ksolana.core
 
 import com.iwebpp.crypto.TweetNaclFast
 import org.komputing.kbase58.decodeBase58
+import org.komputing.kbase58.encodeToBase58String
 import java.nio.ByteBuffer
 
 /**
@@ -26,6 +27,8 @@ data class Account(val secretKey: ByteArray) {
     }
 
     override fun hashCode(): Int = secretKey.contentHashCode()
+
+    override fun toString(): String = secretKey.encodeToBase58String()
 
     companion object {
         /**

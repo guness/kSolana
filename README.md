@@ -6,7 +6,7 @@ kSolana is an API for integrating with Solana blockchain using the [Solana RPC A
 
 ## Requirements
 - Java 11+
-- Android Api 26+ (Only if you are developing Android App/Lib)
+- Android Api 26+
 
 ## Dependencies
 - OkHttp
